@@ -66,7 +66,7 @@ aws ecr create-repository \
 Login to ECR:
 
 ```bash
-aws ecr get-login-password --region ap-south-1 \
+aws ecr get-login-password --region us-east-2 \
 | docker login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.us-east-2.amazonaws.com
 ```
 
