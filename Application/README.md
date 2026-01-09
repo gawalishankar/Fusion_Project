@@ -2,9 +2,13 @@ Fusion Project — Web Application Development
 
 This folder contains the web application of the Fusion Project, developed using HTML, CSS, JavaScript, PHP, and MySQL.
 
+---
+
 Architecture
 
 Frontend (HTML/CSS/JS) → Backend (PHP) → MySQL Database
+
+---
 
 Prerequisites
 
