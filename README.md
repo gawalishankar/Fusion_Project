@@ -1,5 +1,5 @@
 
-# Dance Acedamy Project (Fusion) – AWS ECS Deployment
+# Dance Acadamy Project (Fusion) – AWS ECS Deployment
 
 This repository contains a PHP + MySQL web application deployed on **AWS ECS (Fargate)** using **Docker, Amazon ECR, RDS, ALB, and GitHub Actions CI**.
 
