@@ -64,11 +64,10 @@ CREATE TABLE `coach` (
 --
 
 INSERT INTO `coach` (`cid`, `wid`, `cname`, `uname`, `gender`, `dstyle`, `psw`, `email`, `cselect`) VALUES
-(1, 0, 'Rajesh', 'rajesh', 'Male', 'Free Style', 'rajesh', 'raj@gmail.com', 'Not Action'),
-(2, 0, 'Rajeev', 'rajeev', 'Male', 'Bharatanatyam', 'rajeev', 'rajeev@gmail.com', 'Not Action'),
-(3, 0, 'Nayana', 'nayana', 'Female', 'Ballet', 'nayana', 'n@gmail.com', 'Not Action'),
-(4, 0, 'anusha', 'anu', 'Female', 'Bharatanatyam', 'anu', 'anu@gmail.com', 'Not Action'),
-(5, 3, 'NIKITA', 'NIKITA', 'Female', 'Bharatanatyam', '1234', 'abcd@gmail.com', 'Selected');
+(1, 0, 'Shiv', 'shiv', 'Male', 'Free Style', 'shiv', 'shiv@gmail.com', 'Not Action'),
+(2, 0, 'Sarvesh', 'sarvesh', 'Male', 'Bharatanatyam', 'sarvesh', 'sarvesh@gmail.com', 'Not Action'),
+(3, 0, 'Anuja', 'anuja', 'Female', 'Free Style', 'anuja', 'anu@gmail.com', 'Not Action'),
+(4, 0, 'Pratiksha', 'pratiksha', 'Female', 'Bharatanatyam', 'pratiksha', 'pratiksha@gmail.com', 'Not Action');
 
 -- --------------------------------------------------------
 
@@ -96,9 +95,9 @@ CREATE TABLE `performer` (
 --
 
 INSERT INTO `performer` (`pid`, `wid`, `pname`, `uname`, `age`, `email`, `psw`, `dance_style`, `dtime`, `ddate`, `bookingdate`, `payment`) VALUES
-(3, 0, 'Nimisha', 'nimisha', '20', 'ni@gmail.com', 'nimisha', 'Bharatanatyam', '9 am', '2019-11-29', '2019-11-23', 'not'),
-(5, 0, 'chaitra', 'chai', '20', 'chai@gmail.com', 'chai', 'Kathakali', '9 am', '2019-11-24', '2019-11-23', 'not'),
-(6, 0, 'preethi', 'pre', '20', 'preethi@gmail.com', 'pree', 'Free Style', '9 am', '2019-11-24', '2019-11-23', 'not');
+(3, 0, 'Anuja', 'anuja', '23', 'anu@gmail.com', 'anuja', 'Bharatanatyam', '9 am', '2025-11-29', '2025-11-23', 'not'),
+(5, 0, 'Akanksha', 'akanksha', '24', 'akki@gmail.com', 'akki', 'Kathakali', '9 am', '2025-11-24', '2025-11-23', 'not'),
+(6, 0, 'Aditi', 'aditi', '23', 'aditi@gmail.com', 'aditi', 'Free Style', '9 am', '2025-11-24', '2025-11-23', 'not');
 
 -- --------------------------------------------------------
 
@@ -122,8 +121,8 @@ CREATE TABLE `workshop` (
 --
 
 INSERT INTO `workshop` (`wid`, `wname`, `wdate`, `venue`, `fees`, `wshow`, `wdesc`, `wtime`) VALUES
-(1, 'Hook Crook', '2019-11-24', 'Bangalore', '1000', 0, 'Dreams Becomes Reality Overhere', '9 am'),
-(2, 'summer workshop', '2019-11-30', 'mangalore', '500', 0, 'beach side workshop for one week', '9am '),
+(1, 'Hook Crook', '2025-11-24', 'Bangalore', '1000', 0, 'Dreams Becomes Reality Overhere', '9 am'),
+(2, 'summer workshop', '2025-11-30', 'Mumbai', '500', 0, 'beach side workshop for one week', '9am '),
 (3, 'KALAKRUTHI', '2025-11-30', 'PUNE', '500', 1, 'dance your own style', '10 AM');
 
 --
