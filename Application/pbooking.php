@@ -102,7 +102,7 @@
 // $DB_NAME = 'danceworkshop';
 
 // Create connection
-$con = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+// $con = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
 // Check connection
 if (!$con) {
