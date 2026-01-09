@@ -1,17 +1,18 @@
-Fusion Project — Web Application Development
+# Fusion Project — Web Application Development
 
 This folder contains the web application of the Fusion Project, developed using HTML, CSS, JavaScript, PHP, and MySQL.
 
 ---
 
-Architecture
+## Architecture
 
 Frontend (HTML/CSS/JS) → Backend (PHP) → MySQL Database
 
 ---
 
-Prerequisites
+## Prerequisites
 
+---
 PHP 7.x or higher
 
 MySQL Server
@@ -19,14 +20,15 @@ MySQL Server
 Apache / Nginx server (XAMPP, WAMP, MAMP, or LAMP stack)
 
 Git installed
+---
 
-Optional: Docker (for local containerized development)
+## Optional: Docker (for local containerized development)
 
-Step 1: Clone Repository
+## Step 1: Clone Repository
 git clone https://github.com/gawalishankar/Fusion_Project.git
 cd Fusion_Project/Application
 
-Step 2: Configure Database
+## Step 2: Configure Database
 
 Create a new MySQL database (example: fusion_db)
 
@@ -47,14 +49,14 @@ $DB_PASS = '';
 $DB_NAME = 'fusion_db';
 
 
-✅ Optional: Use environment variables for better security:
+## ✅ Optional: Use environment variables for better security:
 
 $DB_HOST = getenv('DB_HOST');
 $DB_USER = getenv('DB_USER');
 $DB_PASS = getenv('DB_PASS');
 $DB_NAME = getenv('DB_NAME');
 
-Step 3: Run Local Development Server
+## Step 3: Run Local Development Server
 
 Start Apache and MySQL (XAMPP/WAMP/MAMP)
 
@@ -65,7 +67,7 @@ http://localhost/Fusion_Project/Application/
 
 Your application should load and connect to the database.
 
-Step 4: Directory Structure
+## Step 4: Directory Structure
 Application/
 │
 ├── assets/         # CSS, JS, images
@@ -75,7 +77,7 @@ Application/
 ├── database/       # SQL scripts for development
 └── index.php       # Main entry point
 
-Step 5: Optional — Dockerize Application for Development
+## Step 5: Optional — Dockerize Application for Development
 
 Build Docker image:
 
@@ -91,7 +93,7 @@ Open browser:
 
 http://localhost:8080
 
-Step 6: Notes for Development
+## Step 6: Notes for Development
 
 Ensure PHP mysqli extension is enabled
 
