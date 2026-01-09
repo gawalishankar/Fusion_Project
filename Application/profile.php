@@ -71,17 +71,17 @@
   <div id="home" class="intro route bg-image" style="background-image: url(img/home1.jpg);background-size: cover; ">
     <div class="overlay-itro"></div>
      <?php
-//       $con = mysqli_connect(
-//     getenv("DB_HOST"),
-//     getenv("DB_USER"),
-//     getenv("DB_PASS"),
-//     getenv("DB_NAME")
-// );
+      $con = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASS"),
+    getenv("DB_NAME")
+);
 
-$DB_HOST = 'localhost';
-$DB_USER = 'root';
-$DB_PASS = '';       // Default XAMPP MySQL password is empty
-$DB_NAME = 'danceworkshop';
+// $DB_HOST = 'localhost';
+// $DB_USER = 'root';
+// $DB_PASS = '';       // Default XAMPP MySQL password is empty
+// $DB_NAME = 'danceworkshop';
 
 // Create connection
 $con = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
