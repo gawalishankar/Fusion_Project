@@ -1,104 +1,72 @@
-# Fusion Project — Web Application Development
+# Fusion Project
 
-This folder contains the web application of the Fusion Project, developed using HTML, CSS, JavaScript, PHP, and MySQL.
-
----
-
-## Architecture
-
-Frontend (HTML/CSS/JS) → Backend (PHP) → MySQL Database
+Fusion Project is a web-based application developed using modern web technologies with PHP and MySQL as the backend. The project is designed to demonstrate full-stack development along with cloud deployment using AWS services.
 
 ---
 
-## Prerequisites
+## 🖥️ Web Technologies Used
+
+Frontend:
+- HTML
+- CSS
+- JavaScript
+
+Backend:
+- PHP
+
+Database:
+- MySQL
 
 ---
-PHP 7.x or higher
 
-MySQL Server
+## 🛠️ Local Development Setup
 
-Apache / Nginx server (XAMPP, WAMP, MAMP, or LAMP stack)
+### 1️⃣ Clone the Repository
 
-Git installed
----
-
-## Optional: Docker (for local containerized development)
-
-## Step 1: Clone Repository
 git clone https://github.com/gawalishankar/Fusion_Project.git
 cd Fusion_Project/Application
 
-## Step 2: Configure Database
+### 2️⃣ Install Local Server
 
-Create a new MySQL database (example: fusion_db)
+You can use any PHP + MySQL stack:
+- XAMPP
+- WAMP
+- MAMP
 
-mysql -u root -p
-CREATE DATABASE fusion_db;
+Make sure:
+- Apache is running
+- MySQL is running
 
+### 3️⃣ Database Setup
 
-Import SQL file:
+1. Open phpMyAdmin
+2. Create a database (example name: fusion_db)
+3. Import SQL file located in project
 
-mysql -u root -p fusion_db < database/fusion_db.sql
+Example:
 
+fusion_db.sql
 
-Update database connection in config/config.php:
+### 4️⃣ Configure Database Connection
 
-$DB_HOST = 'localhost';
-$DB_USER = 'root';
-$DB_PASS = '';
-$DB_NAME = 'fusion_db';
+Edit config/connection file in PHP and set values:
 
+DB_HOST = localhost
+DB_USER = root
+DB_PASS =
+DB_NAME = fusion_db
 
-## ✅ Optional: Use environment variables for better security:
+Or use environment variables:
 
-$DB_HOST = getenv('DB_HOST');
-$DB_USER = getenv('DB_USER');
-$DB_PASS = getenv('DB_PASS');
-$DB_NAME = getenv('DB_NAME');
+DB_HOST
+DB_USER
+DB_PASS
+DB_NAME
 
-## Step 3: Run Local Development Server
+### 5️⃣ Run Application Locally
 
-Start Apache and MySQL (XAMPP/WAMP/MAMP)
-
-Navigate to application folder:
+Open browser and access:
 
 http://localhost/Fusion_Project/Application/
 
-
-Your application should load and connect to the database.
-
-## Step 4: Directory Structure
-Application/
-│
-├── assets/         # CSS, JS, images
-├── config/         # Database connection and configuration
-├── includes/       # Reusable PHP modules
-├── pages/          # Application pages (frontend + backend)
-├── database/       # SQL scripts for development
-└── index.php       # Main entry point
-
-## Step 5: Optional — Dockerize Application for Development
-
-Build Docker image:
-
-docker build -t fusion-app .
-
-
-Run container:
-
-docker run -d -p 8080:80 fusion-app
-
-
-Open browser:
-
-http://localhost:8080
-
-## Step 6: Notes for Development
-
-Ensure PHP mysqli extension is enabled
-
-Use consistent coding standards for PHP, HTML, and JS
-
-Include assets properly in the assets/ folder
-
-Use includes/ for reusable code to reduce duplication
+---
