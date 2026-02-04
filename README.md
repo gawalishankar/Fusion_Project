@@ -22,7 +22,6 @@ This repository contains a Node.js web application deployed on Kubernetes (Minik
 GitHub → Docker → Minikube (Kubernetes)
                           ├─ Deployment
                           ├─ Service (NodePort)
-                          └─ Prometheus + Grafana Monitoring
 
 ---
 
@@ -36,58 +35,55 @@ GitHub → Docker → Minikube (Kubernetes)
 
 ## Verify:
 
-docker --version
-kubectl version --client
-minikube version
-helm version
-git --version
-
+- docker --version
+- kubectl version --client
+- minikube version
 ---
 
 ## Step 1: Clone Repository
 
-git clone https://github.com/gawalishankar/Fusion_Project.git
-cd Fusion_Project
+- git clone https://github.com/gawalishankar/Fusion_Project.git
+- cd Fusion_Project
 
 ---
 
 ## Step 2: Start Minikube
 
-minikube start --driver=docker
-minikube addons enable ingress
-kubectl get nodes
+- minikube start --driver=docker
+- minikube addons enable ingress
+- kubectl get nodes
 
 ---
 
 ## Step 3: Build Docker Image
 
-Use Minikube Docker daemon
-minikube docker-env | Invoke-Expression
-docker build -t fusion-app:1.0 .
-docker images
+- Use Minikube Docker daemon
+- minikube docker-env | Invoke-Expression
+- docker build -t fusion-app:1.0 .
+- docker images
 
 ---
 
 ## Step 4: Deploy Application on Kubernetes
 
-kubectl apply -f k8s/fusion-deployment.yaml
-kubectl apply -f k8s/fusion-service.yaml
-kubectl get pods
-kubectl get svc
-kubectl logs -l app=fusion
+- kubectl apply -f k8s/fusion-deployment.yaml
+- kubectl apply -f k8s/fusion-service.yaml
+- kubectl get pods
+- kubectl get svc
+- kubectl logs -l app=fusion
 
 ---
 
 ## Step 5: Access Application
 
-minikube service fusion-service
+- minikube service fusion-service
 
 ---
 
 ## Step 8: Cleanup (Optional)
 
-kubectl delete -f k8s/fusion-deployment.yaml
-kubectl delete -f k8s/fusion-service.yaml
-minikube stop
-minikube delete
-docker rmi fusion-app:1.0
+- kubectl delete -f k8s/fusion-deployment.yaml
+- kubectl delete -f k8s/fusion-service.yaml
+- minikube stop
+- minikube delete
+- docker rmi fusion-app:1.0
