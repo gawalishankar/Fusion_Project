@@ -61,7 +61,7 @@ kubectl get nodes
 
 ## Step 3: Build Docker Image
 
-# Use Minikube Docker daemon
+Use Minikube Docker daemon
 minikube docker-env | Invoke-Expression
 docker build -t fusion-app:1.0 .
 docker images
