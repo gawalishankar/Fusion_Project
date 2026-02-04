@@ -1,10 +1,25 @@
 <?php
-   $con = mysqli_connect(
-    getenv("DB_HOST"),
-    getenv("DB_USER"),
-    getenv("DB_PASS"),
-    getenv("DB_NAME")
-);
+//  ( This is for Kubernetes )
+DB_HOST=mysql-service
+DB_PORT=3306
+DB_USER=fusionuser
+DB_PASSWORD=fusionpass
+DB_NAME=fusiondb
+
+
+
+// ( Database for ECS DEPLOYMENT )
+//    $con = mysqli_connect(
+//     getenv("DB_HOST"),
+//     getenv("DB_USER"),
+//     getenv("DB_PASS"),
+//     getenv("DB_NAME")
+// );
+
+
+
+
+
 // $DB_HOST = 'localhost';
 // $DB_USER = 'root';
 // $DB_PASS = '';       // Default XAMPP MySQL password is empty
@@ -12,6 +27,10 @@
 
 // Create connection
 // $con = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+
+
+
+
 
   if (!$con) {
     die("Database connection failed: " . mysqli_connect_error());
