@@ -74,26 +74,12 @@
   <div id="home" class="intro route bg-image" style="background-image: url(img/home1.jpg);background-size: cover; ">
     <div class="overlay-itro"></div>
     <?php
-
-  //  ( This is for Kubernetes )
-DB_HOST=mysql-service
-DB_PORT=3306
-DB_USER=fusionuser
-DB_PASSWORD=fusionpass
-DB_NAME=fusiondb
-
-
-
-// ( Database for ECS DEPLOYMENT )
-//       $con = mysqli_connect(
-//     getenv("DB_HOST"),
-//     getenv("DB_USER"),
-//     getenv("DB_PASS"),
-//     getenv("DB_NAME")
-// );
-
-
-
+      $con = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASS"),
+    getenv("DB_NAME")
+);
 // $DB_HOST = 'localhost';
 // $DB_USER = 'root';
 // $DB_PASS = '';       // Default XAMPP MySQL password is empty
