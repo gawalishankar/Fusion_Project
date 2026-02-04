@@ -1,5 +1,3 @@
-create like this 
-
 # Dance Acadamy Project (Fusion) – AWS ECS Deployment
 
 This repository contains a PHP + MySQL web application deployed on **AWS ECS (Fargate)** using **Docker, Amazon ECR, RDS, ALB, and GitHub Actions CI**.
@@ -261,4 +259,3 @@ Delete ECR images
 ```
 
 ---
-which type of file is this
