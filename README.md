@@ -1,16 +1,3 @@
-
-# Dance Acadamy Project (Fusion) – AWS ECS Deployment
-
-This repository contains a PHP + MySQL web application deployed on **AWS ECS (Fargate)** using **Docker, Amazon ECR, RDS, ALB, and GitHub Actions CI**.
-
----
-
-## Architecture
-
-GitHub → GitHub Actions (CI) → Amazon ECR → Amazon ECS (Fargate) → Application Load Balancer  
-Database → Amazon RDS (MySQL)
-
----
 ## Fusion Project – Minikube Deployment
 
 This repository contains a Node.js web application deployed on Kubernetes (Minikube) using Docker, Kubernetes Deployments & Services, and Prometheus + Grafana for monitoring.
