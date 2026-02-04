@@ -1,3 +1,4 @@
+create like this 
 
 # Dance Acadamy Project (Fusion) – AWS ECS Deployment
 
@@ -11,79 +12,253 @@ GitHub → GitHub Actions (CI) → Amazon ECR → Amazon ECS (Fargate) → Appli
 Database → Amazon RDS (MySQL)
 
 ---
-## Fusion Project – Minikube Deployment
-
-This repository contains a Node.js web application deployed on Kubernetes (Minikube) using Docker, Kubernetes Deployments & Services, and Prometheus + Grafana for monitoring.
-
----
-
-## Architecture
-
-GitHub → Docker → Minikube (Kubernetes)
-                          ├─ Deployment
-                          ├─ Service (NodePort)
-
----
 
 ## Prerequisites
 
+- AWS Account
+- IAM User with permissions for ECS, ECR, RDS, EC2, ELB, IAM, CloudWatch
+- AWS CLI installed
 - Docker installed
-- Minikube installed
-- kubectl installed
-- Helm installed (for Prometheus/Grafana)
 - Git installed
 
-## Verify:
+Configure AWS CLI:
+```bash
+aws configure
+````
 
-- docker --version
-- kubectl version --client
-- minikube version
 ---
 
 ## Step 1: Clone Repository
 
-- git clone https://github.com/gawalishankar/Fusion_Project.git
-- cd Fusion_Project
+```bash
+git clone https://github.com/gawalishankar/Fusion_Project.git
+cd Fusion-Project
+```
 
 ---
 
-## Step 2: Start Minikube
+## Step 2: Dockerize the Application
 
-- minikube start --driver=docker
-- minikube addons enable ingress
-- kubectl get nodes
+Ensure `Dockerfile` exists in the project root.
 
----
+Build and test locally:
 
-## Step 3: Build Docker Image
+```bash
+docker build -t fusion .
+docker run -d -p 8080:80 fusion
+```
 
-- Use Minikube Docker daemon
-- minikube docker-env | Invoke-Expression
-- docker build -t fusion-app:1.0 .
-- docker images
+Verify in browser:
 
----
-
-## Step 4: Deploy Application on Kubernetes
-
-- kubectl apply -f k8s/fusion-deployment.yaml
-- kubectl apply -f k8s/fusion-service.yaml
-- kubectl get pods
-- kubectl get svc
-- kubectl logs -l app=fusion
+```
+http://localhost:8080
+```
 
 ---
 
-## Step 5: Access Application
+## Step 3: Create Amazon ECR Repository
 
-- minikube service fusion-service
+```bash
+aws ecr create-repository \
+--repository-name fusion \
+--region us-east-2
+```
+
+Login to ECR:
+
+```bash
+aws ecr get-login-password --region us-east-2 \
+| docker login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.us-east-2.amazonaws.com
+```
 
 ---
 
-## Step 8: Cleanup (Optional)
+## Step 4: Push Image to ECR (Manual Test)
 
-- kubectl delete -f k8s/fusion-deployment.yaml
-- kubectl delete -f k8s/fusion-service.yaml
-- minikube stop
-- minikube delete
-- docker rmi fusion-app:1.0
+```bash
+docker tag fusion:latest <AWS_ACCOUNT_ID>.dkr.ecr.us-east-2.amazonaws.com/fusion:latest
+docker push <AWS_ACCOUNT_ID>.dkr.ecr.us-east-2.amazonaws.com/fusion:latest
+```
+
+---
+
+## Step 5: Setup GitHub Actions CI
+
+Add GitHub Secrets:
+
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+* AWS_REGION
+* AWS_ACCOUNT_ID
+* ECR_REPOSITORY
+
+Push code to `main` branch to trigger CI.
+
+Verify image in:
+
+```
+AWS Console → ECR → Images
+```
+
+---
+
+## Step 6: Create RDS MySQL Database
+
+* Engine: MySQL
+* DB Name: fusion
+* Username: admin
+* Password: strong password
+* Public access: No
+* VPC: Same as ECS
+
+Ensure security group allows:
+
+```
+Inbound 3306 from ECS security group
+```
+
+---
+
+## Step 7: Import Database Using S3 and EC2
+
+Upload SQL file to S3:
+
+```bash
+aws s3 cp fusion.sql s3://<bucket-name>/
+```
+
+Launch EC2 with IAM role:
+
+* Policy: AmazonS3ReadOnlyAccess
+
+Install MySQL client:
+
+```bash
+sudo yum install mysql -y
+```
+
+Download SQL file:
+
+```bash
+aws s3 cp s3://<bucket-name>/dance.sql .
+```
+
+Import to RDS:
+
+```bash
+mysql -h <RDS-ENDPOINT> -u admin -p fusion < dance.sql
+```
+
+Terminate EC2 after import.
+
+---
+
+## Step 8: Create ECS Cluster
+
+AWS Console:
+
+```
+ECS → Clusters → Create Cluster → Fargate
+```
+
+Cluster name:
+
+```
+fusion-cluster
+```
+
+---
+
+## Step 9: Create IAM Role for ECS Task
+
+Create role:
+
+* Trusted entity: ECS
+* Policy: AmazonECSTaskExecutionRolePolicy
+
+Role name:
+
+```
+ecsTaskExecutionRole
+```
+
+---
+
+## Step 10: Create ECS Task Definition
+
+* Launch type: Fargate
+* CPU: 256
+* Memory: 512
+* Network mode: awsvpc
+* Container port: 80
+* Image: ECR image URI
+* Environment variables:
+
+```
+DB_HOST
+DB_NAME
+DB_USER
+DB_PASS
+```
+
+Register task definition.
+
+---
+
+## Step 11: Create Application Load Balancer
+
+* Type: Application Load Balancer
+* Scheme: Internet-facing
+* Listener: HTTP 80
+* Target type: IP
+
+---
+
+## Step 12: Create ECS Service
+
+* Cluster: fusion-cluster
+* Launch type: Fargate
+* Desired tasks: 2
+* Auto-assign public IP: ENABLED
+* Attach ALB and target group
+* Container port: 80
+
+---
+
+## Step 13: Access Application
+
+Get ALB DNS:
+
+```
+EC2 → Load Balancers → DNS Name
+```
+
+Open in browser:
+
+```
+http://<ALB-DNS>
+```
+
+---
+
+## Step 14: Logs & Monitoring
+
+View logs:
+
+```
+CloudWatch → Log Groups → /ecs/fusion
+```
+
+---
+
+## Cleanup (Cost Saving)
+
+```bash
+Scale ECS service to 0
+Delete ALB
+Stop or delete RDS
+Delete ECR images
+```
+
+---
+which type of file is this
