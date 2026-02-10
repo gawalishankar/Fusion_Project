@@ -21,10 +21,11 @@ GitHub → Docker → Minikube (Kubernetes)
 - Git installed
 
 ## Verify:
-
+```python
 - docker --version
 - kubectl version --client
 - minikube version
+```
 ---
 
 ## Step 1: Clone Repository
@@ -38,14 +39,11 @@ GitHub → Docker → Minikube (Kubernetes)
 ```bash
 - minikube start --driver=docker
 - minikube addons enable ingress
-- kubectl get nodes
 ```
 ---
 
 ## Step 3: Build Docker Image
 ```bash
-- Use Minikube Docker daemon
-- minikube docker-env | Invoke-Expression
 - docker build -t fusion-app:1.0 .
 - docker images
 ```
@@ -55,9 +53,6 @@ GitHub → Docker → Minikube (Kubernetes)
 ```bash
 - kubectl apply -f k8s/fusion-deployment.yaml
 - kubectl apply -f k8s/fusion-service.yaml
-- kubectl get pods
-- kubectl get svc
-- kubectl logs -l app=fusion
 ```
 ---
 
@@ -72,6 +67,6 @@ GitHub → Docker → Minikube (Kubernetes)
 - kubectl delete -f k8s/fusion-deployment.yaml
 - kubectl delete -f k8s/fusion-service.yaml
 - minikube stop
-```
 - minikube delete
 - docker rmi fusion-app:1.0
+```
