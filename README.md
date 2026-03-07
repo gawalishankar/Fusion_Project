@@ -6,7 +6,6 @@ This repository contains a Node.js web application deployed on Kubernetes (Minik
 
 ## Architecture
 
-## Architecture
 
 ```text
 GitHub
