@@ -6,11 +6,23 @@ This repository contains a Node.js web application deployed on Kubernetes (Minik
 
 ## Architecture
 
-GitHub → Docker → Minikube (Kubernetes)
-                          ├─ Deployment
-                          ├─ Service (NodePort)
+## Architecture
 
----
+```text
+GitHub
+   │
+   ▼
+Docker Image Build
+   │
+   ▼
+Minikube Kubernetes Cluster
+   │
+   ├── Deployment
+   │      └── Pods (Application Containers)
+   │
+   └── Service (NodePort)
+          └── Exposes Application to Browser
+```
 
 ## Prerequisites
 
