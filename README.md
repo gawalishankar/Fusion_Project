@@ -8,57 +8,24 @@ This repository contains a PHP + MySQL web application deployed on **AWS ECS (Fa
 
 ## Architecture Workflow
 
-```text
-+-----------+
-| Developer |
-+-----------+
-      |
-      v
-+-----------+
-|  GitHub   |
-+-----------+
-      |
-      v
-+-------------------+
-| GitHub Actions CI |
-| (Build & Test)    |
-+-------------------+
-      |
-      v
-+------------------+
-|   Docker Build   |
-| (Create Image)   |
-+------------------+
-      |
-      v
-+------------------------+
-|   Amazon ECR           |
-| (Container Registry)   |
-+------------------------+
-      |
-      v
-+-----------------------------+
-| Amazon ECS (Fargate Service)|
-|  Container Orchestration    |
-+-----------------------------+
-      |
-      v
-+-----------------------------+
-| Application Load Balancer   |
-|  Traffic Distribution       |
-+-----------------------------+
-      |
-      v
-+-----------------------------+
-| Users Access Web Application|
-+-----------------------------+
-      |
-      v
-+---------------------------+
-| Amazon RDS (MySQL DB)    |
-| Persistent Database      |
-+---------------------------+
-```
+
+Developer  
+↓  
+GitHub Repository  
+↓  
+GitHub Actions CI Pipeline  
+↓  
+Docker Image Build  
+↓  
+Push Image → Amazon ECR  
+↓  
+Deploy → Amazon ECS (Fargate)  
+↓  
+Application Load Balancer  
+↓  
+Users Access Web Application  
+↓  
+Amazon RDS (MySQL Database)
 
 ---
 
